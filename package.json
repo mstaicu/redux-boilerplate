@@ -5,11 +5,14 @@
     "main": "./dist/index_bundle.js",
     "scripts": {
         "dev": "webpack-dev-server --inline --hot",
-        "prod": "webpack --config webpack.config.prod.js"
+        "prod": "webpack --config webpack.config.prod.js",
+        "test": "ava \"**/*.test.js\"",
+        "watch:test": "npm run test -- --watch"
     },
     "author": "mstaicu",
     "license": "MIT",
     "devDependencies": {
+        "ava": "^0.17.0",
         "babel-core": "^6.18.0",
         "babel-loader": "^6.2.5",
         "babel-polyfill": "^6.16.0",
@@ -28,5 +31,9 @@
         "style-loader": "^0.13.1",
         "webpack": "^1.13.2",
         "webpack-dev-server": "^1.16.2"
+    },
+    "ava": {
+        "require": "babel-register",
+        "babel": "inherit"
     }
 }
