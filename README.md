@@ -9,7 +9,7 @@ A short and concise boilerplate tailored for my personal projects
 
 ## Usage
 
-This boilerplate comes with two configuration files for webpack, one for development, one for production. For more info, check out package.json
+This boilerplate comes with two configuration files for webpack, one for development, one for production. For more info, check out package.json. To start the development environment, run the 'dev' npm script. For the production version, with all the files available on the file system, run the 'prod' npm script.
 
 ## Contributing
 
