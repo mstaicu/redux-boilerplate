@@ -12,9 +12,31 @@ import {
     createStore
 } from 'redux';
 
-import HelloWorld from './components/Hello/World';
+import rootReducer from './reducers/rootReducer';
+
+import HelloWorldContainer from './containers/HelloContainer/HelloContainer';
+
+var appStore = createStore(rootReducer);
+
+/**
+import {
+    sayHello
+} from './actions/actions';
+
+var unsubscribe = appStore.subscribe(function() {
+    console.log(appStore.getState());
+});
+
+appStore.dispatch(
+    sayHello(
+        'Mircea'
+    )
+);
+*/
 
 render(
-    <HelloWorld />,
+    <Provider store={appStore}>
+        <HelloWorldContainer />
+    </Provider>,
     document.getElementById('app')
 );
