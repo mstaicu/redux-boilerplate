@@ -8,7 +8,10 @@ module.exports = {
         colors: true,
         historyApiFallback: true
     },
-    entry: './app/index.js',
+    entry: [
+        'babel-polyfill',
+        './app/index.js'
+    ],
     module: {
         loaders: [
             {

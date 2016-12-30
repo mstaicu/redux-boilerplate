@@ -9,30 +9,36 @@ import {
 } from 'react-redux';
 
 import {
-    createStore
+    createStore,
+    applyMiddleware
 } from 'redux';
 
+import createSagaMiddleware from 'redux-saga';
+
 import rootReducer from './reducers/rootReducer';
+import rootSaga from './sagas/sagas';
 
 import HelloWorldContainer from './containers/HelloContainer/HelloContainer';
 
-var appStore = createStore(rootReducer);
+var sagaMiddleware = createSagaMiddleware(),
+    appStore = createStore(
+        rootReducer,
+        applyMiddleware(sagaMiddleware)
+    );
+
+sagaMiddleware.run(rootSaga);
 
 /**
 import {
-    sayHello
+    getNiceError
 } from './actions/actions';
 
 var unsubscribe = appStore.subscribe(function() {
     console.log(appStore.getState());
 });
 
-appStore.dispatch(
-    sayHello(
-        'Mircea'
-    )
-);
-*/
+appStore.dispatch(getNiceError());
+**/
 
 render(
     <Provider store={appStore}>

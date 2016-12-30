@@ -1,8 +1,8 @@
-export var sayHello = function(userName) {
+export var getNiceError = function() {
     return {
-        type: 'SAY_HELLO',
+        type: 'ERROR_TIME',
         payload: {
-            name: userName
+
         }
     };
 };
