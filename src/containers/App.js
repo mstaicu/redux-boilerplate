@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import HelloWorld from '../../components/Hello/World';
+import App from '../components/App/App';
 
 var mapStateToProps = function(state, ownProps) {
     return {};
@@ -9,4 +9,4 @@ var mapStateToProps = function(state, ownProps) {
     return {};
   };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

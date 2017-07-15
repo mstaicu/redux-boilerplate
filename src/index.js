@@ -6,12 +6,14 @@ import { Provider } from 'react-redux';
 
 import { createStore, applyMiddleware } from 'redux';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers';
 import rootSaga from './sagas';
 
-import Routes from './routes';
+import App from './containers/App';
 
 var sagaMiddleware = createSagaMiddleware(),
   appStore = createStore(rootReducer, applyMiddleware(sagaMiddleware));
@@ -29,7 +31,9 @@ sagaMiddleware.run(rootSaga);
 function renderApp() {
   render(
     <Provider store={appStore}>
-      <Routes />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
     document.getElementById('app'),
   );

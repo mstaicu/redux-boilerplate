@@ -2,17 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: {
+    index: './src/index.js',
+    vendor: [
+      'babel-polyfill',
+      'react',
+      'react-router-dom',
+      'react-dom',
+      'react-redux',
+      'redux',
+      'redux-saga',
+    ],
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
   },
   devServer: {
-    compress: true,
     historyApiFallback: true,
     hot: true,
-    publicPath: '/dist/',
   },
   module: {
     rules: [

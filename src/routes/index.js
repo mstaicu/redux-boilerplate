@@ -1,16 +1,23 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import HelloWorldContainer from '../containers/HelloContainer/HelloContainer';
+import loadAsyncComponent from '../utils/async';
+
+import Home from '../components/Home/Home';
+import FourOhFour from '../components/FourOhFour/FourOhFour';
+
+import Fooo from '../components/Foo';
+
+var Foo = loadAsyncComponent(function() {
+  return import('../components/Foo');
+});
 
 export default function() {
   return (
-    <BrowserRouter>
-      <main>
-        <Switch>
-          <Route path="/" exact component={HelloWorldContainer} />
-        </Switch>
-      </main>
-    </BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/foo" component={Fooo} />
+      <Route component={FourOhFour} />
+    </Switch>
   );
 }

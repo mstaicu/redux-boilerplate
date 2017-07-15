@@ -2,9 +2,20 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: {
+    index: './src/index.js',
+    vendor: [
+      'babel-polyfill',
+      'react',
+      'react-router-dom',
+      'react-dom',
+      'react-redux',
+      'redux',
+      'redux-saga',
+    ],
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -16,12 +27,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
           use: 'css-loader',
         }),
       },
     ],
   },
-  plugins: [new ExtractTextPlugin('styles.css')],
+  plugins: [new ExtractTextPlugin('index.styles.css')],
   resolve: {
     extensions: ['.js'],
   },
