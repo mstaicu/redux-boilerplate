@@ -1,9 +1,7 @@
-import {
-    combineReducers
-} from 'redux';
+import { combineReducers } from 'redux';
 
 import helloReducer from './helloReducer';
 
 export default combineReducers({
-    hello: helloReducer
+  hello: helloReducer,
 });
