@@ -35,7 +35,13 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: '[name].bundle.js',
+    }),
+  ],
   resolve: {
     extensions: ['.js'],
   },
