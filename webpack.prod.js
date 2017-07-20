@@ -39,6 +39,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',
+      minChunks: Infinity,
     }),
   ],
   resolve: {
