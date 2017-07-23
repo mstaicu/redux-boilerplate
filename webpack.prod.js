@@ -1,6 +1,8 @@
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -35,12 +37,19 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('index.styles.css'),
+    new UglifyJsWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',
       minChunks: Infinity,
     }),
+    new ExtractTextPlugin('index.styles.css'),
+    new webpack.ProgressPlugin(),
   ],
   resolve: {
     extensions: ['.js'],
