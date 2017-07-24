@@ -31,7 +31,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            },
+          },
+          'css-loader',
+        ],
       },
     ],
   },
@@ -41,7 +49,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',
-      minChunks: Infinity,
     }),
   ],
   resolve: {

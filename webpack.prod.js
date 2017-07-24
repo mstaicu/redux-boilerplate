@@ -46,7 +46,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: '[name].bundle.js',
-      minChunks: Infinity,
     }),
     new ExtractTextPlugin('index.styles.css'),
     new webpack.ProgressPlugin(),
