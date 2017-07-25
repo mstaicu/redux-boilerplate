@@ -1,8 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import retrieveComponent from '../utils/async';
+
 import Home from '../components/Home/Home';
-import FourOhFour from '../components/FourOhFour/FourOhFour';
+
+/**
+  Async load of splitted chunks
+*/
+var FourOhFour = retrieveComponent(function() {
+  return import('../components/FourOhFour/FourOhFour');
+});
 
 export default function() {
   return (
