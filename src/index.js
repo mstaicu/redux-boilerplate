@@ -41,4 +41,4 @@ function renderApp() {
 
 renderApp();
 
-module.hot && module.hot.accept('./routes', renderApp);
+module.hot && module.hot.accept('./components/App/App', renderApp);
